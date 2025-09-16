@@ -1,16 +1,15 @@
-// import Header from "./components/Header/Header";
+import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Contato from "./components/Contato/Contato";
+// import Contato from "./components/Contato/Contato";
+import Home from "./components/Home/Home";
 
-// import Home from "./components/Home/Home";
 const App = () => {
   return (
     <>
-      {/* <Header></Header> */}
+      <Header></Header>
+      <Home></Home>
 
-      {/* <Home></Home> */}
-
-      <Contato></Contato>
+      {/* <Contato></Contato> */}
 
       <Footer></Footer>
     </>

@@ -43,7 +43,7 @@ const Footer = () => {
                         <div className="w-full flex items-center justify-center">
                             <img src={playstore} alt="Link da PlayStore para baixar o app Portal do Paciente - HC" className="w-6 h-6" />
                             <p className="text-black text-base">Clique <a
-                                href="https://play.google.com/store/apps/details?id=com.netihc.portaldopaciente">aqui</a>
+                                href="https://play.google.com/store/apps/details?id=com.netihc.portaldopaciente">aqui </a>
                             para baixar na PlayStore</p>
                         </div>
                     </div>
