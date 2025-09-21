@@ -1,11 +1,14 @@
 // sendo feito no mobile (375 por 667) IPHONE SE
 
 // tablet Asus Zenbook 853 por 1280
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 const Contato = () => {
     return (
         <>
-            <main>
+          <Header/>
+
                 <div className="bg-[#d9d9d9] flex flex-col items-center p- space-y-2 p-8">
                     <h1 className="font-bold text-xl text-center md:text-2xl lg:text-3xl">Contato</h1>
 
@@ -34,7 +37,8 @@ const Contato = () => {
                     </fieldset>
 
                 </div>
-            </main>
+                
+        <Footer/>
         </>
     );
 };

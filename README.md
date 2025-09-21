@@ -1,69 +1,45 @@
-# React + TypeScript + Vite
+# HC Acessível - Apoio ao App do Hospital das Clínicas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto está sendo desenvolvido por estudantes de Análise e Desenvolvimento de Sistemas da FIAP e nós temos que desenvolver uma solução real para um problema real proposto pelo Challenge. Nosso objetivo é auxiliar pacientes no uso do aplicativo do Hospital das Clínicas, no acesso a telemedicina.
 
-Currently, two official plugins are available:
+## 🎯 Objetivo do Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A objetivo é criar um site responsivo integrado a um chatbot que oriente pacientes com baixa familiaridade digital a navegarem pelas funcionalidades da plataforma, realizarem consultas, acompanharem seus tratamentos e tirarem dúvidas frequentes. A solução busca reduzir os impactos do absenteísmo em consultas e sessões de reabilitação, oferecendo orientação acessível e interação humanizada através da tecnologia.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🗂️ Estrutura de pastas e arquivos
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+    projeto
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠 Tecnologias
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 👥 Integrantes
+
+    Nome: 
+      Júlia Tiziotto Buttler
+      RM: 564975
+      GITHUB: JuliaTButtler
+      LINKEDIN: Júlia T Buttler
+      Turma: 1TDSA
+
+      Mariana Xavier Quispe
+      RM: 566357
+      GITHUB: Marixavq
+      LINKEDIN: Mariana Xavier Quispe
+      Turma: 1TDSA
+
+      Yanick José Zen dos Santos
+      RM: 558350 
+      GITHUB: yanick3
+      LINKEDIN: Yanick Santos
+      Turma: 1TDSA
+
+
+
+
+## 📂 Endereço do projeto 
+
+https://github.com/projeto-hc/site-hc-react
