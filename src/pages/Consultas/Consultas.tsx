@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
@@ -9,8 +11,7 @@ const Consultas = () => {
                 <h1 className="font-bold text-center text-2xl md:text-3xl lg:text-3xl mx-auto py-4">Consultas marcadas</h1>
             </div>
 
-
-            
+            <p className="text-black text-base"><Link to="/AnotarConsultas">Adicionar consultas</Link></p>
 
             <Footer />
         </>
