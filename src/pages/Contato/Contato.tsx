@@ -3,6 +3,7 @@
 // tablet Asus Zenbook 853 por 1280
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import Botao from "../../components/Botao/Botao";
 
 const Contato = () => {
     return (
@@ -32,7 +33,7 @@ const Contato = () => {
                             <textarea id="mensagem" name="mensagem" rows={5} className="bg-transparent border border-black rounded-sm w-full" ></textarea>
                         </div>
 
-                        <button className="bg-[#417571] p-2 border border-black rounded-sm text-base text-white lg:text-2xl">Enviar</button>
+                        <Botao texto="Enviar"></Botao>
 
                     </fieldset>
 

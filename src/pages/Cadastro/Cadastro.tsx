@@ -1,5 +1,7 @@
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import Botao from "../../components/Botao/Botao";
+
 const Cadastro = () => {
     return (
         <>
@@ -25,11 +27,21 @@ const Cadastro = () => {
                             <input type="tel" name="telefone" id="telefone" className="bg-transparent border border-black rounded-sm w-full" />
                         </div>
                         <div>
+                            <label htmlFor="endereco"
+                                className="text-base lg:text-xl">Endereço</label>
+                            <input type="text" name="endereco" id="endereco" className="bg-transparent border border-black rounded-sm w-full" />
+                        </div>
+                        <div>
+                            <label htmlFor="acessibilidade"
+                                className="text-base lg:text-xl">Precisa de acessiblidade?</label>
+                            <input type="text" name="acessibilidade" id="acessibilidade" className="bg-transparent border border-black rounded-sm w-full" />
+                        </div>
+                        <div>
                             <label htmlFor="senha" className="text-base lg:text-xl">Senha</label>
                             <input type="password" name="senha" id="senha" className="bg-transparent border border-black rounded-sm w-full" />
                         </div>
 
-                        <button className="bg-[#417571] p-2 border border-black rounded-sm text-base text-white lg:text-2xl">Enviar</button>
+                        <Botao texto="Enviar"></Botao>
 
                     </fieldset>
                 </div>
