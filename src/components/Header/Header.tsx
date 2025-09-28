@@ -17,7 +17,7 @@ const Header = () => {
             <nav>
               <ul className="hidden md:flex space-x-8">
                 <li className="text-white lg:text-xl"><Link to="/Consultas">Consultas</Link></li>
-                <li className="text-white lg:text-xl"><Link to="/Faq">Faq</Link></li>
+                <li className="text-white lg:text-xl"><Link to="/Faq">FAQ</Link></li>
                 <li className="text-white lg:text-xl"><Link to="/Chat">Chat</Link></li>
                 <li className="text-white lg:text-xl"><Link to="/Contato">Contato</Link></li>
               </ul>
@@ -30,7 +30,7 @@ const Header = () => {
             <div className="flex flex-col space-y-3">
               <ul>
                 <li className="text-white lg:text-xl"><Link to="/Consultas">Consultas</Link></li>
-                <li className="text-white lg:text-xl"><Link to="/Faq">Faq</Link></li>
+                <li className="text-white lg:text-xl"><Link to="/Faq">FAQ</Link></li>
                 <li className="text-white lg:text-xl"><Link to="/Chat">Chat</Link></li>
                 <li className="text-white lg:text-xl"><Link to="/Contato">Contato</Link></li>
               </ul>

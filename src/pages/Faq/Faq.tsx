@@ -1,15 +1,16 @@
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import Accordion from '../../components/Accordion/Accordion';
+import Titulo from "../../components/Titulo/Titulo";
 const Faq = () => {
     return (
         <>
             <Header />
 
             <div className="bg-[#d9d9d9] flex flex-col items-center p- space-y-2 p-8">
-                <h1 className="font-bold text-xl text-center md:text-2xl lg:text-3xl">FAQ</h1>
+                <Titulo texto="FAQ"></Titulo>
 
-                <p className="text-base justify-items-center w-80 md:text-2xl lg:w-3/5 lg:text-2xl mx-auto text-center pb-4">
+                <p className="max-w-xl text-base text-center pb-5 md:text-lg lg:text-xl">
                     Bem vindo(a) a nossa sessão de perguntas frequentes. Caso não encontre a resposta para sua
                     dúvida aqui, acesse a página Chat, ou Contato para falar diretamente com a equipe de suporte.
                 </p>

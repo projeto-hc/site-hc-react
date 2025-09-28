@@ -8,7 +8,7 @@ function Accordion({ title, content }: { title: string; content: React.ReactNode
     return (
         <>
             <div className="border border-black rounded p-5 w-80 md:w-96">
-                <button onClick={() => setIsOpen(!isOpen)} className=" flex items-center justify-between w-full text-xl">
+                <button onClick={() => setIsOpen(!isOpen)} className=" flex items-center justify-between w-full text-base md:text-lg py-2">
                     {title}
                     <img
                         src={ChevronDown}
@@ -19,7 +19,7 @@ function Accordion({ title, content }: { title: string; content: React.ReactNode
                 </button>
 
                 {isOpen && (
-                    <div className="text-base">
+                    <div className="text-base md:lg">
                         <div>{content}</div>
                     </div>
                 )}
