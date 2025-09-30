@@ -9,6 +9,7 @@ import Integrantes from "./pages/Integrantes/Integrantes";
 import Faq from "./pages/Faq/Faq";
 import Chat from "./pages/Chat/Chat";
 import Contato from "./pages/Contato/Contato";
+import Sobre from "./pages/Sobre/Sobre";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/Faq" element={<Faq />} />
           <Route path="/Chat" element={<Chat />} />
           <Route path="/Contato" element={<Contato />} />
+          <Route path="/Sobre" element={<Sobre />} />
         </Routes>
 
       </BrowserRouter>

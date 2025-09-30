@@ -1,6 +1,3 @@
-// sendo feito no mobile (375 por 667) IPHONE SE
-
-// tablet Asus Zenbook 853 por 1280
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Botao from "../../components/Botao/Botao";
