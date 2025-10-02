@@ -10,10 +10,28 @@ A objetivo é criar um site responsivo integrado a um chatbot que oriente pacien
 ## 🗂️ Estrutura de pastas e arquivos
 
     projeto
+        public
+        src
+            assets
+                imagens
+                    pastas de imagens (jpg/png; svg)
+            components
+                Componente.tsx
+            pages
+                Pagina.tsx
+            App.tsx
+            main.tsx
 
+        index.html
+        README.md
+        tsconfig.json
+        package.json
 
 ## 🛠 Tecnologias
 
+- React, Tailwnd e TypeScript
+- Git e GitHub para versionamento
+- Chatbot IBM Watson
 
 
 ## 👥 Integrantes

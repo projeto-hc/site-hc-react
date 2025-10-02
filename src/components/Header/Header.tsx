@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+
+import NavItem from "../NavItem/NavItem"
+
 import imglogo from '../../assets/imagens/imglogo.svg'
 import menu from '../../assets/imagens/menu.svg'
 import x from '../../assets/imagens/x.svg'
@@ -12,17 +15,17 @@ const Header = () => {
       <header className="z-50 bg-[#417571] w-full flex items-center px-6 lg:px-10 h-24">
 
         <div className="flex justify-between w-full">
-          <Link to="/" className="flex items-center lg:text-xl">
+          <Link to="/" className="flex items-center font-joti lg:text-xl">
             <img src={imglogo} alt="Página inicial do site SaúdeBot" className="w-6 h-6" />
             SaúdeBot
           </Link>
 
           <nav>
             <ul className="hidden md:flex space-x-8">
-              <li className="text-white lg:text-xl"><Link to="/Consultas">Consultas</Link></li>
-              <li className="text-white lg:text-xl"><Link to="/Faq">FAQ</Link></li>
-              <li className="text-white lg:text-xl"><Link to="/Chat">Chat</Link></li>
-              <li className="text-white lg:text-xl"><Link to="/Contato">Contato</Link></li>
+              <NavItem to="/consultas" label="Consultas" />
+              <NavItem to="/faq" label="FAQ" />
+              <NavItem to="/chat" label="Chat" />
+              <NavItem to="/contato" label="Contato" />
             </ul>
           </nav>
 
@@ -43,10 +46,10 @@ const Header = () => {
         {menuOpen && (
           <div className="md:hidden absolute top-20 right-0 w-48 bg-[#417571] flex flex-col p-6" id="mobile-menu">
             <ul>
-              <li className="text-white py-2"><Link to="/Consultas">Consultas</Link></li>
-              <li className="text-white py-2"><Link to="/Faq">FAQ</Link></li>
-              <li className="text-white py-2"><Link to="/Chat">Chat</Link></li>
-              <li className="text-white py-2"><Link to="/Contato">Contato</Link></li>
+              <NavItem to="/consultas" label="Consultas" />
+              <NavItem to="/faq" label="FAQ" />
+              <NavItem to="/chat" label="Chat" />
+              <NavItem to="/contato" label="Contato" />
             </ul>
           </div>
         )}

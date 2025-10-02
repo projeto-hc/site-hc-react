@@ -7,3 +7,8 @@ function Botao  ({ texto } : { texto : string }) {
 }
 
 export default Botao
+
+
+
+
+

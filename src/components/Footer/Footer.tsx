@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import NavItem from "../NavItem/NavItem"
 
 import imglogo from '../../assets/imagens/imglogo.svg'
 import maps from '../../assets/imagens/maps.svg'
@@ -13,7 +14,7 @@ const Footer = () => {
             <footer>
                 <div className="bg-[#417571] w-full h-auto py-7 md:flex flex-row justify-between">
 
-                    <Link to="/" className="flex items-center justify-center lg:text-xl">
+                    <Link to="/" className="flex items-center justify-center font-joti pl-5 lg:text-xl">
                         <img src={imglogo} alt="Página inicial do site SaúdeBot" className="w-6 h-6" />
                         SaúdeBot
                     </Link>
@@ -21,37 +22,21 @@ const Footer = () => {
                     <div className="flex flex-col text-center space-y-2 p-3 md:text-left">
                         <p className="text-2xl font-inter text-white">Projeto</p>
                         <ul>
-                            <li className="text-white text-base font-inter">
-                                <Link to="/Consultas">Consultas</Link>
-                            </li>
-                            <li className="text-white text-base font-inter">
-                                <Link to="/Cadastro">Cadastro</Link>
-                            </li>
-                            <li className="text-white text-base font-inter">
-                                <Link to="/Login">Login</Link>
-                            </li>
-                            <li className="text-white text-base font-inter">
-                                <Link to="/Integrantes">Integrantes</Link>
-                            </li>
-                            <li className="text-white text-base font-inter">
-                                <Link to="/Sobre">Sobre</Link>
-                            </li>
+                            <NavItem to="/consultas" label="Consultas" />
+                            <NavItem to="/cadastro" label="Cadastro" />
+                            <NavItem to="/login" label="Login" />
+                            <NavItem to="/integrantes" label="Integrantes" />
+                            <NavItem to="/sobre" label="Sobre" />
                         </ul>
                     </div>
 
                     <div className="flex flex-col text-center space-y-2 p-3 md:text-left px-6">
                         <p className="text-2xl font-inter text-white">Suporte</p>
                         <ul>
-                            <li className="text-white text-base font-inter">
-                                <Link to="/FAQ">FAQ</Link>
-                            </li>
-                            <li className="text-white text-base font-inter">
-                                <Link to="/Chat">Chat</Link>
-                            </li>
-                            <li className="text-white text-base font-inter">
-                                <Link to="/Contato">Contato</Link>
-                            </li>
-                            
+                            <NavItem to="/FAQ" label="FAQ" />
+                            <NavItem to="/Chat" label="Chat" />
+                            <NavItem to="/Contato" label="Contato" />
+
                         </ul>
                     </div>
 
@@ -59,22 +44,22 @@ const Footer = () => {
                         <p className="text-2xl font-inter text-white">Informações</p>
                         <div className="w-full flex items-center justify-center md:justify-start">
                             <img src={maps} alt="Endereço do Hospital das Clínicas" className="w-6 h-6 pr-1" />
-                            <p className="text-white text-base font-inter">Complexo do HC – Eixo Rosa (Portão 3, Inrad), São Paulo – SP</p>
+                            <p className="text-white text-base">Complexo do HC – Eixo Rosa (Portão 3, Inrad), São Paulo – SP</p>
                         </div>
                         <div className="w-full flex items-center justify-center md:justify-start">
                             <img src={phone} alt="Telefone para contato com Hospital das Clínicas" className="w-6 h-6 pr-1" />
-                            <p className="text-white text-base font-inter">(11) 2661-7557 / 2661-7821</p>
+                            <p className="text-white text-base">(11) 2661-7557 / 2661-7821</p>
                         </div>
                         <div className="w-full flex items-center justify-center md:justify-start">
                             <img src={hospital} alt="Site oficial do Hospital das Clínicas" className="w-6 h-6 pr-1" />
-                            <p className="text-white text-base font-inter">
-                                Site oficial do <a href="https://redelucymontoro.org.br/site/area-do-paciente/teleatendimento/" className="text-[#1D72B8]">HC ImREA</a>
+                            <p className="text-white text-base">
+                                Site oficial do <a href="https://redelucymontoro.org.br/site/area-do-paciente/teleatendimento/" className="text-black hover:text-blue-950 transition-colors duration-300">HC ImREA</a>
                             </p>
                         </div>
                         <div className="w-full flex items-center justify-center md:justify-start">
                             <img src={playstore} alt="Link da PlayStore para baixar o app Portal do Paciente - HC" className="w-6 h-6" />
-                            <p className="text-white text-base font-inter">
-                                Clique <a href="https://play.google.com/store/apps/details?id=com.netihc.portaldopaciente" className="text-[#1D72B8]">aqui</a> para baixar na PlayStore
+                            <p className="text-white text-base">
+                                Clique <a href="https://play.google.com/store/apps/details?id=com.netihc.portaldopaciente" className="text-black hover:text-blue-950 transition-colors duration-300">aqui</a> para baixar na PlayStore
                             </p>
                         </div>
                     </div>
