@@ -56,12 +56,10 @@ A objetivo é criar um site responsivo integrado a um chatbot que oriente pacien
       Turma: 1TDSA
 
 
-
-
 ## 📂 Endereço do projeto 
 
 https://github.com/projeto-hc/site-hc-react
 
-## 🌐 Endereço do projeto 
+## 🌐 Link Vercel
 
 https://site-hc-react.vercel.app/
