@@ -10,6 +10,8 @@ import Faq from "./pages/Faq/Faq";
 import Chat from "./pages/Chat/Chat";
 import Contato from "./pages/Contato/Contato";
 import Sobre from "./pages/Sobre/Sobre";
+import Layout from './components/Layout/Layout'
+
 
 function App() {
 
@@ -18,19 +20,22 @@ function App() {
       <BrowserRouter>
 
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Consultas" element={<Consultas />} />
-          <Route path="/AnotarConsultas" element={<AnotarConsultas />} />
-          <Route path="/Cadastro" element={<Cadastro />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Integrantes" element={<Integrantes />} />
-          <Route path="/Faq" element={<Faq />} />
-          <Route path="/Chat" element={<Chat />} />
-          <Route path="/Contato" element={<Contato />} />
-          <Route path="/Sobre" element={<Sobre />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />   {/* rotas filhas do layout */}
+            <Route path="/Consultas" element={<Consultas />} />
+            <Route path="/AnotarConsultas" element={<AnotarConsultas />} />
+            <Route path="/Cadastro" element={<Cadastro />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Integrantes" element={<Integrantes />} />
+            <Route path="/Faq" element={<Faq />} />
+            <Route path="/Chat" element={<Chat />} />
+            <Route path="/Contato" element={<Contato />} />
+            <Route path="/Sobre" element={<Sobre />} />
+          </Route>
         </Routes>
 
       </BrowserRouter>
+
     </>
   )
 }

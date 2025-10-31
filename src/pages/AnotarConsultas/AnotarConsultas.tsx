@@ -1,5 +1,3 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import Botao from "../../components/Botao/Botao";
 import Titulo from "../../components/Titulo/Titulo";
 
@@ -7,7 +5,6 @@ import Titulo from "../../components/Titulo/Titulo";
 const AnotarConsulta = () => {
     return (
         <>
-            <Header />
             <div className="bg-[#d9d9d9] flex flex-col p- space-y-2 p-8 justify-center">
                 <Titulo texto="Anotar Consultas"></Titulo>
 
@@ -40,7 +37,6 @@ const AnotarConsulta = () => {
                     </fieldset>
                 </div>
             </div>
-            <Footer />
         </>
     );
 };

@@ -1,5 +1,3 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import Titulo from "../../components/Titulo/Titulo";
 
 import Julia from '../../assets/imagens/julia.jpg';
@@ -10,8 +8,6 @@ import Yanick from '../../assets/imagens/yanick.jpg';
 const Integrantes = () => {
     return (
         <>
-            <Header />
-
             <div className="bg-[#d9d9d9] p-8 justify-center">
                 <Titulo texto="Integrantes"></Titulo>
 
@@ -53,10 +49,7 @@ const Integrantes = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
-
-            <Footer />
         </>
     );
 }

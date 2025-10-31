@@ -1,12 +1,8 @@
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
 import Accordion from '../../components/Accordion/Accordion';
 import Titulo from "../../components/Titulo/Titulo";
 const Faq = () => {
     return (
         <>
-            <Header />
-
             <div className="bg-[#d9d9d9] flex flex-col items-center p- space-y-2 p-8">
                 <Titulo texto="FAQ"></Titulo>
 
@@ -94,13 +90,7 @@ const Faq = () => {
 
                     </p>}
                 />
-
-
-
-
             </div>
-
-            <Footer />
         </>
     );
 };

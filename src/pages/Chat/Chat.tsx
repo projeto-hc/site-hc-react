@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import Titulo from "../../components/Titulo/Titulo";
 
 interface ChatProps {
@@ -38,13 +36,11 @@ export function Chat({ containerId = "chat-container" }: ChatProps) {
 
     return (
         <>
-            <Header />
             <div className="bg-[#d9d9d9]">
                 <Titulo texto="Chat"></Titulo>
                 <div id={containerId} className="h-96 w-full"></div>
 
             </div>
-            <Footer />
         </>
     );
 }

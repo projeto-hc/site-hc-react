@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import Botao from "../../components/Botao/Botao";
 import Titulo from "../../components/Titulo/Titulo";
 
@@ -25,7 +23,6 @@ const Cadastro = () => {
 
   return (
     <>
-      <Header />
       <div className="bg-[#d9d9d9] flex flex-col space-y-2 p-8 justify-center">
         <Titulo texto="Cadastro" />
         <div className="flex justify-center">
@@ -84,7 +81,6 @@ const Cadastro = () => {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

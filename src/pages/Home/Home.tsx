@@ -1,11 +1,10 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import { Link } from "react-router-dom";
+
 import Titulo from "../../components/Titulo/Titulo";
 
 const Home = () => {
     return (
         <>
-            <Header />
             <main>
                 <div className="bg-[#d9d9d9] flex flex-col p- space-y-2 p-8 justify-center items-center">
 
@@ -17,11 +16,12 @@ const Home = () => {
                         <h2 className="font-bold text-white self-center text-2xl md:text-3xl">Precisa de ajuda?</h2>
                         <p className="text-white text-center p-2 md:text-lg my-1 ">Conheça SaúdeBot, que vai te guiar na preparação para a consulta e esclarece suas dúvidas.</p>
 
-                        <button className="bg-white border border-black rounded-lg p-2 self-center md:p-3 text-xl">Clique aqui</button>
+                        <button className="bg-white border border-black rounded-lg p-2 self-center hover:text-blue-950 transition-colors duration-300 md:p-3 text-xl">
+                            <Link to={"/chat"}> {"Clique aqui"}</Link>
+                        </button>
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     );
 }

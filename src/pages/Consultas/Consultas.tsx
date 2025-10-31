@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState } from "react";
 
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer"
 import Titulo from "../../components/Titulo/Titulo";
 
 const Consultas = () => {
@@ -46,8 +44,6 @@ const Consultas = () => {
 
     return (
         <>
-
-            <Header />
             <div className="bg-[#d9d9d9] flex flex-col items-center">
                 <Titulo texto="Consultas marcadas"></Titulo>
                 <p className="text-base text-center pb-4 lg:text-lg">Marque sua consulta no app do HC e anote aqui para ser lembrado. Clique nos campos para editar os dados.</p>
@@ -90,10 +86,6 @@ const Consultas = () => {
                 </ul>
                 <p className="bg-[#417571] p-2 border my-6 border-black rounded-md text-base text-white lg:text-lg"><Link to="/AnotarConsultas">Adicionar consultas</Link></p>
             </div>
-
-
-            <Footer />
-
         </>
     );
 }
