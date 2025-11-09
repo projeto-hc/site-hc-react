@@ -25,7 +25,7 @@ const Contato = () => {
       <div className="bg-[#d9d9d9] flex flex-col space-y-2 p-8 justify-center">
         <Titulo texto="Contato" />
         <div className="flex justify-center">
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
             <fieldset className="border border-black rounded-lg p-6 space-y-4">
               <div>
                 <label htmlFor="nome">Nome</label>
@@ -33,9 +33,11 @@ const Contato = () => {
                   type="text"
                   id="nome"
                   className="bg-transparent border border-black rounded-sm w-full"
-                  {...register("nome", { required: true })}
+                  {...register("nome", {
+                    required: "O nome é obrigatório!"
+                  })}
                 />
-                {errors.nome && <p className="text-red-500 text-sm">Campo obrigatório</p>}
+                {errors.nome && <span className="text-red-500 text-sm">{errors.nome.message}</span>}
               </div>
 
               <div>
@@ -44,9 +46,15 @@ const Contato = () => {
                   type="email"
                   id="email"
                   className="bg-transparent border border-black rounded-sm w-full"
-                  {...register("email", { required: true })}
+                  {...register("email", {
+                    required: "O email é obrigatório",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Digite um email correto"
+                    }
+                  })}
                 />
-                {errors.email && <p className="text-red-500 text-sm">Campo obrigatório</p>}
+                {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
               </div>
 
               <div>
@@ -54,9 +62,11 @@ const Contato = () => {
                 <textarea
                   id="mensagem"
                   className="bg-transparent border border-black rounded-sm w-full"
-                  {...register("mensagem", { required: true })}
+                  {...register("mensagem", {
+                    required: "Informe o motivo do contato!"
+                  })}
                 />
-                {errors.mensagem && <p className="text-red-500 text-sm">Campo obrigatório</p>}
+                {errors.mensagem && <span className="text-red-500 text-sm">{errors.mensagem.message}</span>}
               </div>
 
               <div className="flex justify-end">

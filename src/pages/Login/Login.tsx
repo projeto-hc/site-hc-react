@@ -25,10 +25,11 @@ const Login = () => {
       <div className="bg-[#d9d9d9] flex flex-col space-y-2 p-8 justify-center">
         <Titulo texto="Login" />
         <div className="flex justify-center">
-          <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-96">
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm">
             <fieldset className="border border-black rounded-lg p-6">
+
               <p className="text-base text-center pb-4 lg:text-lg">
-                Faça login para receber notificações de suas consultas marcadas...
+                Faça login para receber notificações de suas consultas marcadas
               </p>
 
               <div className="pb-3">
@@ -37,9 +38,15 @@ const Login = () => {
                   type="email"
                   id="email"
                   className="bg-transparent border border-black rounded-sm w-full"
-                  {...register("email", { required: true })}
+                  {...register("email", {
+                    required: "O email é obrigatório",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Digite um email correto"
+                    }
+                  })}
                 />
-                {errors.email && <p className="text-red-500 text-sm">Campo obrigatório</p>}
+                {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
               </div>
 
               <div className="pb-3">
@@ -48,9 +55,20 @@ const Login = () => {
                   type="password"
                   id="senha"
                   className="bg-transparent border border-black rounded-sm w-full"
-                  {...register("senha", { required: true })}
+                  {
+                  ...register("senha", {
+                    required: "A senha é obrigatória!",
+                    minLength: { value: 4, message: "Mínimo de 4 caracteres" },
+                    validate: value =>
+                      !/[A-Z]/.test(value) ? "Deve conter uma letra maiúscula" :
+                        !/[a-z]/.test(value) ? "Deve conter uma letra minúscula" :
+                          !/\d/.test(value) ? "Deve conter um número" :
+                            !/[A-Za-z0-9]/.test(value) ? "Deve conter um caracter especial" :
+                              true
+                  })
+                  }
                 />
-                {errors.senha && <p className="text-red-500 text-sm">Campo obrigatório</p>}
+                {errors.senha && <span className="text-red-500 text-sm">{errors.senha.message}</span>}
               </div>
 
               <div className="flex justify-between items-center">
