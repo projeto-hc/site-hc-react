@@ -7,23 +7,42 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 type Consulta = {
-    id?: number;
+    idConsulta?: number;
     data: string;
     horario: string;
-    especialidade: string;
-    profissional: string;
+    // recebendo objeto completo pro Java ficar bonito
+    especialidade: {
+        idEspecialidade: number;
+        nomeEspecialidade: string;
+        descricao: string;
+    };
+    profissional: {
+        idProfissional: number;
+        nomeProfissional: string;
+        crmProfissional: string;
+    };
 };
+
 const AnotarConsulta = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const consultaEdicao = location.state as Consulta | null; // edita consulta, se houver
 
     const [consulta, setConsulta] = useState<Consulta>({
-        id: consultaEdicao?.id ?? undefined,
+        idConsulta: consultaEdicao?.idConsulta ?? undefined,
         data: consultaEdicao?.data ?? "",
         horario: consultaEdicao?.horario ?? "",
-        especialidade: consultaEdicao?.especialidade ?? "",
-        profissional: consultaEdicao?.profissional ?? "",
+        // recebendo objeto completo pro Java ficar bonito, mas vou usar só nome
+        especialidade: consultaEdicao?.especialidade ?? {
+            idEspecialidade: 0,
+            nomeEspecialidade: "",
+            descricao: "",
+        },
+        profissional: consultaEdicao?.profissional ?? {
+            idProfissional: 0,
+            nomeProfissional: "",
+            crmProfissional: "",
+        },
     });
 
     // se houver edição, preenche os dados
@@ -33,23 +52,37 @@ const AnotarConsulta = () => {
         }
     }, [consultaEdicao]);
 
-    const API_URL = "http://localhost:8080/aluno";
+    const API_URL = "http://localhost:8080/consulta";
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { id, value } = e.target;
-        setConsulta({
-            ...consulta,
-            [id]: value,
-            // ouuuuuu       [id]: id === "id" ? Number(value) : value
-        });
+        const { name, value } = e.target;
+        const [parent, child] = name.split(".");
+
+        if (child) {
+            // se for filho (atributo do objeto completo)
+            setConsulta({
+                ...consulta,
+                [parent]: {
+                    ...consulta[parent as "especialidade" | "profissional"],
+                    [child]: value,
+                },
+            });
+        } else {
+            // se não, atualiza campo simples
+            setConsulta({
+                ...consulta,
+                [name]: value,
+            });
+        }
     };
 
 
     // Unifica cadastro e atualização
     const handleSubmit = async () => {
-        const method = consulta.id ? "PUT" : "POST";
-        const url = consulta.id ? `${API_URL}/${consulta.id}` : API_URL;
-
+        const method = consulta.idConsulta ? "PUT" : "POST";
+        const url = API_URL;
+        // const url = consulta.idConsulta ? `${API_URL}/${consulta.idConsulta}` : API_URL;
+        console.log(consulta)
         try {
             const response = await fetch(url, {
                 method,
@@ -59,11 +92,11 @@ const AnotarConsulta = () => {
 
             if (response.ok) {
                 alert(
-                    consulta.id
-                        ? `Consulta "${consulta.id}" atualizada com sucesso!`
-                        : `Consulta "${consulta.id}" cadastrada com sucesso!`
+                    consulta.idConsulta
+                        ? `Consulta atualizada com sucesso!`
+                        : `Consulta cadastrada com sucesso!`
                 );
-                navigate("/listar");
+                navigate("/consultas");
             } else {
                 const erro = await response.text();
                 alert("Erro ao salvar consulta: " + erro);
@@ -75,7 +108,22 @@ const AnotarConsulta = () => {
     };
 
     const handleReset = () => {
-        setConsulta({ id: 0, data: "", horario: "", especialidade: "", profissional: "" });
+        setConsulta({
+            idConsulta: 0,
+            data: "",
+            horario: "",
+            especialidade: {
+                idEspecialidade: 0,
+                nomeEspecialidade: "",
+                descricao: "",
+            },
+            profissional: {
+                idProfissional: 0,
+                nomeProfissional: "",
+                crmProfissional: "",
+            },
+        });
+
     };
 
 
@@ -85,7 +133,7 @@ const AnotarConsulta = () => {
             <div className="bg-[#d9d9d9] flex flex-col p- space-y-2 p-8 justify-center">
                 {/* <Titulo texto="Anotar Consultas"></Titulo> */}
                 <h1 className="text-2xl font-semibold text-center mb-6">
-                    {consulta.id ? "Atualizar Consulta" : "Anotar Consulta"}
+                    {consulta.idConsulta ? "Atualizar Consulta" : "Anotar Consulta"}
                 </h1>
 
                 <form
@@ -108,34 +156,35 @@ const AnotarConsulta = () => {
                                 <label htmlFor="horario" className="text-base lg:text-lg">Horário</label>
                                 <input type="time" name="horario" id="horario" value={consulta.horario} onChange={handleChange} className="bg-transparent border border-black rounded-sm w-full" />
                             </div>
-                            <div className="pb-3">
-                                <label htmlFor="especialidade" className="text-base lg:text-lg">Especialidade</label>
-                                <input type="text" name="especialidade" id="especialidade" value={consulta.especialidade} onChange={handleChange} className="bg-transparent border border-black rounded-sm w-full" />
-                            </div>
-                            <div className="pb-3">
-                                <label htmlFor="profissional" className="text-base lg:text-lg">Médico (Profissional)</label>
-                                <input type="text" name="profissional" id="profissional" value={consulta.profissional} onChange={handleChange} className="bg-transparent border border-black rounded-sm w-full" />
-                            </div>
 
-                             {/* <div className="flex justify-end">
-                                <Botao texto="Salvar"></Botao>
-                            </div>  */}
+                            {/* Ao atualizar, digite uma especialidade já existente no Banco de dados como:  */}
+                            {/* Fonoaudiologia  */}
+                            <div className="pb-3">
+                                <label htmlFor="especialidade.nomeEspecialidade" className="text-base lg:text-lg">Especialidade</label>
+                                <input type="text" name="especialidade.nomeEspecialidade" id="especialidade.nomeEspecialidade" value={consulta.especialidade.nomeEspecialidade} onChange={handleChange} className="bg-transparent border border-black rounded-sm w-full" />
+                            </div>
+                              {/* Ao atualizar, digite um nome já existente no Banco de dados como:  */}
+                            {/* Dr. João Silva */}
+                            <div className="pb-3">
+                                <label htmlFor="profissional.nomeProfissional" className="text-base lg:text-lg">Médico (Profissional)</label>
+                                <input type="text" name="profissional.nomeProfissional" id="profissional.nomeProfissional" value={consulta.profissional.nomeProfissional} onChange={handleChange} className="bg-transparent border border-black rounded-sm w-full" />
+                            </div>
 
                             <div className="flex justify-between mt-6">
                                 <button
                                     type="button"
                                     onClick={handleSubmit}
-                                    className={`${consulta.id
-                                        ? "bg-amber-500 hover:bg-amber-600"
+                                    className={`${consulta.idConsulta
+                                        ? "border border-black bg-orange-300 hover:bg-amber-400"
                                         : "bg-[#417571] border border-black hover:text-black"
-                                        } text-white px-5 py-2 rounded-md text-base transition duration-300`}
+                                        } text-white px-5 py-2 rounded-md text-base transition duration-200`}
                                 >
-                                    {consulta.id ? "Atualizar" : "Salvar"}
+                                    {consulta.idConsulta ? "Atualizar" : "Salvar"}
                                 </button>
 
                                 <button
                                     type="reset"
-                                    className="bg-gray-300 border border-black  hover:bg-gray-400 px-5 py-2 rounded-md text-base transition duration-300"
+                                    className="bg-gray-300 border border-black  hover:bg-gray-400 px-5 py-2 rounded-md text-base transition duration-200"
                                 >
                                     Limpar
                                 </button>

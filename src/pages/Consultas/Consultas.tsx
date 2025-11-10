@@ -4,11 +4,20 @@ import { useState, useEffect } from "react";
 import Titulo from "../../components/Titulo/Titulo";
 
 type Consulta = {
-    id?: number;
+    idConsulta?: number;
     data: string;
     horario: string;
-    especialidade: string;
-    profissional: string;
+    // recebendo objeto completo pro Java ficar bonito
+    especialidade: {
+        idEspecialidade: number;
+        nomeEspecialidade: string;
+        descricao: string;
+    };
+    profissional: {
+        idProfissional: number;
+        nomeProfissional: string;
+        crmProfissional: string;
+    };
 };
 
 const Consultas = () => {
@@ -17,7 +26,7 @@ const Consultas = () => {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const API_URL = "http://localhost:8080/aluno";
+    const API_URL = "http://localhost:8080/consulta";
 
     useEffect(() => {
         fetchConsultas();
@@ -39,17 +48,17 @@ const Consultas = () => {
     };
 
     const deletarConsulta = async (consulta: Consulta) => {
-        if (!window.confirm(`Deseja realmente excluir a consulta de "${consulta.especialidade}"?`))
+        if (!window.confirm(`Deseja realmente excluir a consulta "${consulta.idConsulta}"?`))
             return;
         try {
-            const response = await fetch(`${API_URL}/${consulta.id}`, {
+            const response = await fetch(`${API_URL}/${consulta.idConsulta}`, {
                 method: "DELETE",
             });
             if (response.ok) {
-                setConsultas((prev) => prev.filter((a) => a.id !== consulta.id));
-                alert(`A consulta "${consulta.especialidade}" foi excluída com sucesso.`);
+                setConsultas((prev) => prev.filter((a) => a.idConsulta !== consulta.idConsulta));
+                alert(`A consulta "${consulta.idConsulta}" foi excluída com sucesso.`);
             } else {
-                alert(`Erro ao excluir consulta "${consulta.especialidade}".`);
+                alert(`Erro ao excluir consulta"${consulta.idConsulta}".`);
             }
         } catch (error) {
             alert(`Erro de conexão com o servidor.${error}`);
@@ -91,16 +100,18 @@ const Consultas = () => {
                     )}
 
                     {!loading && consultas.length > 0 && (
+
                         <div className="overflow-x-auto">
-                            <table className="w-full border-collapse border border-gray-300 text-sm text-gray-900">
-                                <thead className="bg-blue-700 text-white">
+                                         <table className="w-full border-collapse text-sm text-gray-900">
+                                <thead className="text-black">
                                     <tr>
-                                        <th className="border border-gray-300 px-4 py-2">Data</th>
-                                        <th className="border border-gray-300 px-4 py-2">Horário</th>
-                                        <th className="border border-gray-300 px-4 py-2">Especialidade</th>
-                                        <th className="border border-gray-300 px-4 py-2">Médico (Profissional)</th>
+                                        <th className="px-4 py-2">Data</th>
+                                        <th className="px-4 py-2">Horário</th>
+                                        <th className="px-4 py-2">Especialidade</th>
+                                        <th className="px-4 py-2">Médico (Profissional)</th> 
+                                        {/* por enquanto, só é possível atualizar Profissional e Especialidade com nomes já cadastrados no BD */}
                                         <th
-                                            className="border border-gray-300 px-4 py-2 text-center"
+                                            className="text-left px-4 py-2"
                                             colSpan={2}
                                         >
                                             Ação
@@ -110,29 +121,24 @@ const Consultas = () => {
                                 <tbody>
                                     {consultas.map((consulta) => (
                                         <tr
-                                            key={consulta.id}
-                                            className="hover:bg-gray-100 transition duration-150"
+                                            key={consulta.idConsulta}
                                         >
-                                            <td className="border border-gray-300 px-4 py-2"> {consulta.data} </td>
-                                            <td className="border border-gray-300 px-4 py-2"> {consulta.horario} </td>
-                                            <td className="border border-gray-300 px-4 py-2"> {consulta.especialidade} </td>
-                                            <td className="border border-gray-300 px-4 py-2"> {consulta.profissional} </td>
-                                            <td className="border border-gray-300 px-4 py-2 text-center">
-                                                <button
-                                                    onClick={() => editarConsulta(consulta)}
-                                                    className="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded-md text-xs transition duration-200"
-                                                >
-                                                    Atualizar
-                                                </button>
-                                            </td>
-                                            <td className="border border-gray-300 px-4 py-2 text-center">
-                                                <button
-                                                    onClick={() => deletarConsulta(consulta)}
-                                                    className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-xs transition duration-200"
-                                                >
-                                                    Excluir
-                                                </button>
-                                            </td>
+                                            <td className="px-4 py-2"> {consulta.data} </td>
+                                            <td className="px-4 py-2"> {consulta.horario} </td>
+                                            <td className="px-4 py-2"> {consulta.especialidade?.nomeEspecialidade} </td>
+                                            <td className="px-4 py-2"> {consulta.profissional?.nomeProfissional}</td>
+                                            <div>
+                                                <td className="px-4 py-2 text-center">
+                                                    <button onClick={() => editarConsulta(consulta)} className="border border-black bg-orange-300 hover:bg-amber-400 px-3 py-1 rounded-md text-xs transition duration-200">
+                                                        Atualizar
+                                                    </button>
+                                                </td>
+                                                <td className="border border-gray-300 px-4 py-2 text-center">
+                                                    <button onClick={() => deletarConsulta(consulta)} className= "border border-black bg-red-300 hover:bg-red-400 px-3 py-1 rounded-md text-xs transition duration-200">
+                                                        Excluir
+                                                    </button>
+                                                </td>
+                                            </div>
                                         </tr>
                                     ))}
                                 </tbody>

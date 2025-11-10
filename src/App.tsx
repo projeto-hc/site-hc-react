@@ -23,6 +23,10 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />   {/* rotas filhas do layout */}
             <Route path="/Consultas" element={<Consultas />} />
+
+            <Route path="/cadastrar" element={<AnotarConsultas />} />
+            <Route path="/atualizar" element={<AnotarConsultas />} />
+            {/* <Route path="/listar" element={<Listar />} /> */}
             <Route path="/AnotarConsultas" element={<AnotarConsultas />} />
             <Route path="/Cadastro" element={<Cadastro />} />
             <Route path="/Login" element={<Login />} />
